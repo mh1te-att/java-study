@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d4de231-7540-46ee-bde3-2877459fcec9" name="Default Changelist" comment="" />
+    <list default="true" id="2d4de231-7540-46ee-bde3-2877459fcec9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Parcel1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Stream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/GenerateTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GenerateTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/test.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1V6iUhfHbSTaxHoz0eyvn0WJwne" />
   <component name="ProjectViewState">
@@ -15,13 +43,28 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Stream">
     <configuration name="Algs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Algs" />
       <module name="java-study" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Parcel1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Parcel1" />
+      <module name="test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Stream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Stream" />
+      <module name="test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -75,6 +118,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Stream" />
+        <item itemvalue="Application.Parcel1" />
         <item itemvalue="Application.Algs" />
       </list>
     </recent_temporary>
@@ -102,10 +147,43 @@
       <option name="presentableId" value="Default" />
       <updated>1576579963011</updated>
       <workItem from="1576579964259" duration="650000" />
+      <workItem from="1576632504773" duration="3138000" />
+      <workItem from="1576719294214" duration="89000" />
+      <workItem from="1576719498343" duration="614000" />
+      <workItem from="1576804944724" duration="3936000" />
+      <workItem from="1577064963871" duration="584000" />
+      <workItem from="1577345254113" duration="5818000" />
+      <workItem from="1577410237889" duration="580000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="676" y="150" key="#com.intellij.ide.util.MemberChooser" timestamp="1576824224631">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="676" y="150" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1576824224631" />
+    <state width="1864" height="286" key="GridCell.Tab.0.bottom" timestamp="1577351119476">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1864" height="286" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577351119476" />
+    <state width="1864" height="286" key="GridCell.Tab.0.center" timestamp="1577351119476">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1864" height="286" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577351119476" />
+    <state width="1864" height="286" key="GridCell.Tab.0.left" timestamp="1577351119476">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1864" height="286" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577351119476" />
+    <state width="1864" height="286" key="GridCell.Tab.0.right" timestamp="1577351119476">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1864" height="286" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577351119476" />
+    <state x="680" y="418" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1577349512480">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="680" y="418" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577349512480" />
   </component>
 </project>
