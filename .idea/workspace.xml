@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d4de231-7540-46ee-bde3-2877459fcec9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadDemo01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadDemo02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadRandomDemo01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadShareVariableDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadVariableStopDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ThreadPriorityDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,17 +38,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
-  <component name="RunManager" selected="Application.ThreadVariableStopDemo">
-    <configuration name="ThreadDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ThreadDemo" />
+  <component name="RunManager" selected="Application.ThreadInterruptDemo">
+    <configuration name="ThreadInterruptDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ThreadInterruptDemo" />
       <module name="test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadDemo02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ThreadDemo02" />
+    <configuration name="ThreadPriorityDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ThreadPriorityDemo" />
       <module name="test" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ThreadInterruptDemo" />
+        <item itemvalue="Application.ThreadPriorityDemo" />
         <item itemvalue="Application.ThreadVariableStopDemo" />
         <item itemvalue="Application.ThreadShareVariableDemo" />
         <item itemvalue="Application.ThreadRandomDemo01" />
-        <item itemvalue="Application.ThreadDemo02" />
-        <item itemvalue="Application.ThreadDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -183,22 +180,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="237" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577496547312" />
-    <state width="1864" height="214" key="GridCell.Tab.0.bottom" timestamp="1577504578542">
+    <state width="1864" height="189" key="GridCell.Tab.0.bottom" timestamp="1577945741972">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1864" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577504578542" />
-    <state width="1864" height="214" key="GridCell.Tab.0.center" timestamp="1577504578542">
+    <state width="1864" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577945741972" />
+    <state width="1864" height="189" key="GridCell.Tab.0.center" timestamp="1577945741972">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1864" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577504578542" />
-    <state width="1864" height="214" key="GridCell.Tab.0.left" timestamp="1577504578542">
+    <state width="1864" height="189" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577945741972" />
+    <state width="1864" height="189" key="GridCell.Tab.0.left" timestamp="1577945741972">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1864" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577504578542" />
-    <state width="1864" height="214" key="GridCell.Tab.0.right" timestamp="1577504578542">
+    <state width="1864" height="189" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577945741972" />
+    <state width="1864" height="189" key="GridCell.Tab.0.right" timestamp="1577945741972">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1864" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577504578542" />
+    <state width="1864" height="189" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577945741972" />
+    <state x="345" y="63" key="SettingsEditor" timestamp="1577930807376">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="345" y="63" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1577930807376" />
     <state x="680" y="418" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1577349512480">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
