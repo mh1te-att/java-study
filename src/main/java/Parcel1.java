@@ -10,6 +10,7 @@ public class Parcel1 {
                     '}';
         }
     }
+
     class  Destination{
         private String label;
         Destination(String whereTo){
@@ -24,6 +25,7 @@ public class Parcel1 {
         System.out.println(c.value());
         System.out.println(d.readLable());
     }
+
     public static void main(String[] args) {
         Parcel1 p = new Parcel1();
         p.ship("Zhengy");
