@@ -1,3 +1,8 @@
+package thread;
+
+/**
+ * 线程优先级
+ */
 public class ThreadPriorityDemo {
     public static void main(String[] args) {
         Thread thread_1 = new ThreadPriority("thread-1");

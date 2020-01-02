@@ -2,12 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d4de231-7540-46ee-bde3-2877459fcec9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-study.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java-study.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Parcel1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parcel1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadDemo01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/ThreadDemo01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadDemo02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/ThreadDemo02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadInterruptDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/ThreadInterruptDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadPriorityDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/ThreadPriorityDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadRandomDemo01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/ThreadRandomDemo01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadShareVariableDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/ThreadShareVariableDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ThreadVariableStopDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thread/ThreadVariableStopDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InterruptThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InterruptThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MyRunnable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MyRunnable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MyThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MyThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parcel1$Destination.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parcel1$Destination.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parcel1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parcel1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadDemo01.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadDemo01.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadDemo02.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadDemo02.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadInterruptDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadInterruptDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPriority.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadPriority.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ThreadPriorityDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ThreadPriorityDemo.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,22 +54,22 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/thread" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
-  <component name="RunManager" selected="Application.ThreadInterruptDemo">
-    <configuration name="ThreadInterruptDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ThreadInterruptDemo" />
+  <component name="RunManager" selected="Application.ThreadVariableStopDemo (1)">
+    <configuration name="ThreadDemo01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ThreadDemo01" />
       <module name="java-study" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadPriorityDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ThreadPriorityDemo" />
+    <configuration name="ThreadDemo02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ThreadDemo02" />
       <module name="java-study" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -71,26 +83,38 @@
       </method>
     </configuration>
     <configuration name="ThreadShareVariableDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ThreadShareVariableDemo" />
+      <option name="MAIN_CLASS_NAME" value="thread.ThreadShareVariableDemo" />
       <module name="java-study" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="thread.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadVariableStopDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ThreadVariableStopDemo" />
+    <configuration name="ThreadVariableStopDemo (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="thread.ThreadVariableStopDemo" />
       <module name="java-study" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="thread.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ThreadInterruptDemo" />
-        <item itemvalue="Application.ThreadPriorityDemo" />
-        <item itemvalue="Application.ThreadVariableStopDemo" />
+        <item itemvalue="Application.ThreadVariableStopDemo (1)" />
         <item itemvalue="Application.ThreadShareVariableDemo" />
         <item itemvalue="Application.ThreadRandomDemo01" />
+        <item itemvalue="Application.ThreadDemo02" />
+        <item itemvalue="Application.ThreadDemo01" />
       </list>
     </recent_temporary>
   </component>
@@ -126,6 +150,7 @@
       <workItem from="1577410237889" duration="643000" />
       <workItem from="1577496378968" duration="177000" />
       <workItem from="1577496576355" duration="5355000" />
+      <workItem from="1577946733916" duration="679000" />
     </task>
     <servers />
   </component>
@@ -145,22 +170,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="237" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577496547312" />
-    <state width="1864" height="189" key="GridCell.Tab.0.bottom" timestamp="1577946713256">
+    <state width="1864" height="189" key="GridCell.Tab.0.bottom" timestamp="1577947418929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577946713256" />
-    <state width="1864" height="189" key="GridCell.Tab.0.center" timestamp="1577946713256">
+    <state width="1864" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577947418929" />
+    <state width="1864" height="189" key="GridCell.Tab.0.center" timestamp="1577947418929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577946713256" />
-    <state width="1864" height="189" key="GridCell.Tab.0.left" timestamp="1577946713256">
+    <state width="1864" height="189" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577947418929" />
+    <state width="1864" height="189" key="GridCell.Tab.0.left" timestamp="1577947418928">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577946713256" />
-    <state width="1864" height="189" key="GridCell.Tab.0.right" timestamp="1577946713256">
+    <state width="1864" height="189" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577947418928" />
+    <state width="1864" height="189" key="GridCell.Tab.0.right" timestamp="1577947418929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577946713256" />
+    <state width="1864" height="189" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577947418929" />
     <state x="345" y="63" key="SettingsEditor" timestamp="1577930807376">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

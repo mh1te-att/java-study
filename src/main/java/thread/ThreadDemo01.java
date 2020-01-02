@@ -1,3 +1,8 @@
+package thread;
+
+/**
+ * thread建立线程
+ */
 public class ThreadDemo01 {
     public static void main(String[] args) {
         MyThread myThread = new MyThread();

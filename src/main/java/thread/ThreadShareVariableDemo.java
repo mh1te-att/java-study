@@ -1,3 +1,8 @@
+package thread;
+
+/**
+ * 线程共享
+ */
 public class ThreadShareVariableDemo {
     public static void main(String[] args) {
         Runnable runnable = new ShareVariableThread();

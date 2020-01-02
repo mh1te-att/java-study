@@ -1,3 +1,8 @@
+package thread;
+
+/**
+ * stop强制终止线程
+ */
 public class ThreadVariableStopDemo {
     public static void main(String[] args) throws InterruptedException {
         VariableStopThread thread = new VariableStopThread("Thread:1");

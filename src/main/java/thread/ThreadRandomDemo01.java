@@ -1,3 +1,8 @@
+package thread;
+
+/**
+ * 线程随机分配
+ */
 public class ThreadRandomDemo01 {
     public static void main(String[] args) {
         Thread[] threads = new Thread[10];

@@ -1,3 +1,8 @@
+package thread;
+
+/**
+ * interrupt终止线程
+ */
 public class ThreadInterruptDemo {
     public static void main(String[] args) throws InterruptedException {
         Thread thread = new InterruptThread("thread-1");
