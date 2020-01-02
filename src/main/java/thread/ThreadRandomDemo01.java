@@ -25,7 +25,7 @@ class ThreadRandom extends Thread {
     public void run() {
         try {
             Thread.sleep(1000);
-            System.out.println(Thread.currentThread().getName());
+            System.out.println(this.getName());
         } catch (Exception e) {
             e.printStackTrace();
         }

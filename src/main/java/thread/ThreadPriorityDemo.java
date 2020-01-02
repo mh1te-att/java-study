@@ -13,8 +13,7 @@ public class ThreadPriorityDemo {
         thread_2.start();
     }
 }
-
-class ThreadPriority extends Thread {
+ class ThreadPriority extends Thread {
 
     public ThreadPriority(String name) {
         super(name);
