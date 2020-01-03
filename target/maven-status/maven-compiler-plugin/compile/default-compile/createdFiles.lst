@@ -8,11 +8,16 @@ thread\ThreadRandomDemo01.class
 thread\ThreadDemo01.class
 thread\ThreadPriority.class
 thread\MyThread.class
+Student.class
 Algs.class
+ComparatorTest.class
 thread\MyRunnable.class
 thread\ShareVariableThread.class
+threadPool\ScheduledExecutorTest.class
+Address.class
 thread\ThreadPriorityDemo.class
 thread\ThreadVariableStopDemo.class
+threadPool\ExecutorTest.class
 thread\ThreadInterruptDemo.class
 Parcel1$Contents.class
 thread\ThreadDemo02.class
