@@ -1,10 +1,11 @@
 package thread;
 
-public class RunnableDemo implements Runnable {
-    private Thread t;
-    private String threadName;
+public class RunnableDemo02 implements Runnable {
 
-    RunnableDemo(String threadName) {
+    private Thread t;
+    private final String threadName;
+
+    RunnableDemo02(String threadName) {
         this.threadName = threadName;
         System.out.println("Creating " + threadName);
     }
@@ -34,10 +35,10 @@ public class RunnableDemo implements Runnable {
 
 class TestThread {
     public static void main(String[] args) {
-        RunnableDemo R1 = new RunnableDemo("Thread-1");
+        RunnableDemo02 R1 = new RunnableDemo02("Thread-1");
         R1.start();
 
-        RunnableDemo R2 = new RunnableDemo("Thread-1");
+        RunnableDemo02 R2 = new RunnableDemo02("Thread-2");
         R2.start();
     }
 }
