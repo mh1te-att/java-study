@@ -1,12 +1,10 @@
 package sort;
 
 /**
- *
  * @Title: SelectSort
  * @Description: 直接选择排序
  * @Author: zhaoyc
  * @Date: 2020/2/18 14:06
- *
  */
 public class SelectSort {
     public static void main(String[] args) {

@@ -1,12 +1,10 @@
 package sort;
 
 /**
- *
  * @Title: sort.BubbleSort
  * @Description: 冒泡排序
  * @Author: zhaoyc
  * @Date: 2020/2/18 12:33
- *
  */
 public class BubbleSort {
     public static void main(String[] args) {
