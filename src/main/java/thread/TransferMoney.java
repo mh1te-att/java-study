@@ -64,6 +64,6 @@ class Account {
                 target.setMoney(target.getMoney() + amount);
             }
         }
-
     }
+
 }

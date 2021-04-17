@@ -2,7 +2,6 @@ package thread;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.AnnotatedType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -29,14 +28,9 @@ public class SellTicket {
         List<Thread> threadList = new ArrayList<>();
         List<Integer> soldTickets = new Vector<>();
 
-        for (int i = 0; i < 4000; i++) {
+        for (int i = 0; i < 2000; i++) {
             Thread thread = new Thread(() -> {
                 int sold = window.sellTicket(randomAmount());
-                try {
-                    Thread.sleep(0);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 soldTickets.add(sold);
             });
             threadList.add(thread);
@@ -48,7 +42,7 @@ public class SellTicket {
         }
 
         log.debug("剩余票数: {}", window.getAmount());
-        log.debug("总共卖出: {}", soldTickets.stream().mapToInt(i ->i).sum());
+        log.debug("总共卖出: {}", soldTickets.stream().mapToInt(i -> i).sum());
     }
 }
 
@@ -69,11 +63,18 @@ class TicketWindow {
     }
 
     public int sellTicket(int ticket) {
-        if (this.amount >= ticket) {
-            this.amount -= ticket;
-            return ticket;
-        } else {
-            return 0;
+        synchronized (this) {
+            if (this.amount >= ticket) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                this.amount -= ticket;
+                return ticket;
+            } else {
+                return 0;
+            }
         }
     }
 }
