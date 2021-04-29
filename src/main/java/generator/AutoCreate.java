@@ -1,48 +1,144 @@
-package generator;
+package com.zeusas.cloud.repo.generator;
+
+import com.zeusas.util.QDate;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * 自动创建dao、service、impl、controller, 不会重复创建
+ * 自动创建service、impl、dao、controller
  *
  * @author zhaoyc
  * @since 16-Apr-21
  */
 public class AutoCreate {
 
-    /** 驱动 */
-    static String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-    /** 服务器地址 */
-    static String DB_URL = "jdbc:mysql://192.168.1.253:3306/dp_repo?useSSL=false";
-    /** 登录用户名 */
-    static String DB_UID = "repov5";
-    /** 登录密码 */
-    static String DB_PWD = "repov5";
-    /** 项目包名 */
-    static String PACKAGE = "com.zeusas.cloud.buos.info";
-    /** 创建人 */
-    static String CREATOR = "zhaoyc";
+    /**
+     * 驱动
+     */
+    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+    /**
+     * 服务器地址
+     */
+    private static final String DB_URL = "jdbc:mysql://192.168.1.253:3306/dp_repo?useSSL=false";
+    /**
+     * 登录用户名
+     */
+    private static final String DB_UID = "repov5";
+    /**
+     * 登录密码
+     */
+    private static final String DB_PWD = "repov5";
+    /**
+     * 数据库操作
+     */
+    private static final String SQL = "SELECT * FROM ";
+    // todo: 自行修改对应的包名
+    /**
+     * 项目包名
+     */
+    private static final String PACKAGE = "com.zeusas.cloud.repo";
+    // todo: 自行修改对应的路径
+    /**
+     * 项目包名
+     */
+    private static final String PATH = "\\repo-lib\\src\\main\\java\\com\\zeusas\\cloud\\repo\\";
+    // todo: 自行修改对应的人名
+    /**
+     * 创建人
+     */
+    private static final String CREATOR = "zhaoyc";
+    // todo: 不会生成重复表名的文件,但可以自行添加需要忽略创建的表名
+    /**
+     * 忽略的表名,格式为大驼峰,比如:HelloWorld
+     */
+    private static final List<String> IGNORE = Arrays.asList("CoreDict",
+            "CoreIdgen",
+            "CounterAchievementHistory",
+            "CounterAchievementInTime",
+            "CounterNew",
+            "RepoTargetDay",
+            "RepoTargetLog",
+            "RepoTargetMonth",
+            "RepoUnit",
+            "RepoUnitGroup",
+            "RepoUnitGroupItem",
+            "RepoUnitOrg");
 
-    /** key为表名称, value为主键类型 */
+    /**
+     * key为表名称, value为主键类型
+     */
     static Map<String, String> TABLE_MAP = new HashMap<>();
 
     public static void main(String[] args) throws Exception {
+//         generateFromTable();
+        generateFromClazzList();
+    }
+
+    /**
+     * 根据类列表生成文件
+     *
+     * @author Wei Wei
+     * @since 14:28 2021/4/21
+     */
+    private static void generateFromClazzList() {
+        List<ClazzProperty> clazzList = new ArrayList<>();
+        clazzList.add(new ClazzProperty("Integer", "SysCounter"));
+        generateFromClazzList(clazzList);
+    }
+
+
+    /**
+     * 根据类列表生成文件
+     *
+     * @param clazzList 要生成的类列表
+     * @author Wei Wei
+     * @since 14:28 2021/4/21
+     */
+    private static void generateFromClazzList(List<ClazzProperty> clazzList) {
+        for (ClazzProperty clazzProperty : clazzList) {
+            createStart(clazzProperty.pkClazzName, clazzProperty.baseName);
+        }
+    }
+
+    /**
+     * 根据数据表生成
+     *
+     * @throws Exception Exception
+     * @author Wei Wei
+     * @since 14:26 2021/4/21
+     */
+    private static void generateFromTable() throws Exception {
         AutoCreate auto = new AutoCreate();
-        //获取所有数据表
-        List<String> list = auto.getTableList();
+        // 获取所有数据表
+        List<String> list = auto.init();
+        // 忽略的表名
+        list.removeAll(IGNORE);
         for (String table : list) {
             createStart(table);
+        }
+    }
+
+    static class ClazzProperty {
+        /**
+         * 主键类的名称
+         */
+        private final String pkClazzName;
+        /**
+         * 基础名称 baseName + dao\service\serviceImpl 等为类名
+         */
+        private final String baseName;
+
+        public ClazzProperty(String pkClazzName, String baseName) {
+            this.pkClazzName = pkClazzName;
+            this.baseName = baseName;
         }
     }
 
@@ -53,25 +149,24 @@ public class AutoCreate {
      * @author zhaoyc
      * @since 16-Apr-21
      */
-    public List<String> getTableList() throws Exception {
+    public List<String> init() throws Exception {
         // 访问数据库 采用 JDBC方式
         Class.forName(DB_DRIVER);
         Connection con = DriverManager.getConnection(DB_URL, DB_UID, DB_PWD);
         DatabaseMetaData md = con.getMetaData();
         List<String> list = new ArrayList<>();
-        String[] types ={"TABLE"};
+        String[] types = {"TABLE"};
         ResultSet rs = md.getTables(null, "%", "%", types);
 
         HashMap<String, String> map = new HashMap<>();
         while (rs.next()) {
             String tableName = rs.getString("TABLE_NAME");
-            ResultSet primaryKeyResultSet = md.getPrimaryKeys(null, null, tableName);
-            tableName = toTableName(tableName);
-            while(primaryKeyResultSet.next()){
-                int primaryKeyType = primaryKeyResultSet.getMetaData().getColumnType(1);
-                String type = toClass(primaryKeyType);
-                map.put(tableName, type);
-            }
+            String tableSql = SQL + tableName + " limit 1";
+            ResultSetMetaData metaData= con.prepareStatement(tableSql).getMetaData();
+            int primaryKeyType = metaData.getColumnType(1);
+            String type = toClass(primaryKeyType);
+            tableName = toBigHump(tableName);
+            map.put(tableName, type);
             list.add(tableName);
         }
         TABLE_MAP.putAll(map);
@@ -82,7 +177,6 @@ public class AutoCreate {
      * 把数据库类型转换为java类型
      *
      * @param type 数据库类型
-     *
      * @return java.lang.String
      * @author zhaoyc
      * @since 17-Apr-21
@@ -157,7 +251,6 @@ public class AutoCreate {
      * 把输入字符串的首字母改成大写
      *
      * @param str 输入的字符串
-     *
      * @return java.lang.String
      * @author zhaoyc
      * @since 16-Apr-21
@@ -174,7 +267,6 @@ public class AutoCreate {
      * 把输入字符串的首字母改成小写
      *
      * @param str 输入的字符串
-     *
      * @return java.lang.String
      * @author zhaoyc
      * @since 16-Apr-21
@@ -190,91 +282,91 @@ public class AutoCreate {
     /**
      * 首字母转换和下划线转换
      *
-     * @param tableName 表名称
-     *
+     * @param underlineString 下划线分隔的字符串
      * @return java.lang.String
      * @author zhaoyc
      * @since 16-Apr-21
      */
-    private static String toTableName(String tableName) {
-        String[] tables = tableName.split("_");
+    private static String toBigHump(String underlineString) {
+        String[] tables = underlineString.split("_");
         StringBuilder sb = new StringBuilder();
         for (String s : tables) {
             sb.append(initCap(s));
         }
-        tableName = sb.toString();
-        return tableName;
+        return sb.toString();
     }
+
 
     /**
      * 创建Dao
      *
-     * @param tableName 表名称
-     *
+     * @param pkClazzName 主键类型
+     * @param baseName    基础名称
      * @return java.lang.String
      * @author zhaoyc
      * @since 17-Apr-21
      */
-    private static String createDao(String tableName) {
-        String type = TABLE_MAP.get(tableName);
+    private static String createDao(String pkClazzName, String baseName) {
         return "package " + PACKAGE + ".dao;\n" +
                "\n" +
-               "import " + PACKAGE + ".entity." + tableName + ";\n" +
+               "import " + PACKAGE + ".entity." + baseName + "Entity;\n" +
                "import com.zeusas.cloud.core.dao.BasicJpaRepository;\n" +
                "\n" +
                "/**\n" +
                " * TODO: 描述\n" +
                " *\n" +
                " * @author " + CREATOR + "\n" +
-               " * @since TODO: 创建时间\n" +
+               " * @since " + QDate.format(QDate.YYYY_MM_DD_HMS, System.currentTimeMillis()) + "\n" +
                " */\n" +
-               "public interface " + tableName + "Dao extends BasicJpaRepository<" + tableName + ", " + type + "> {\n" +
+               "public interface " + baseName + "Dao extends BasicJpaRepository<" + baseName + "Entity, " + pkClazzName + "> {\n" +
                "\n" +
                "}";
     }
 
+
     /**
      * 创建Service
      *
-     * @param tableName 表名称
-     *
+     * @param pkClazzName 主键类型
+     * @param baseName    基础名称
      * @return java.lang.String
      * @author zhaoyc
      * @since 17-Apr-21
      */
-    private static String createService(String tableName) {
+    private static String createService(String pkClazzName, String baseName) {
         return "package " + PACKAGE + ".service;\n" +
                "\n" +
-               "import " + PACKAGE + ".entity." + tableName + ";\n" +
+               "import " + PACKAGE + ".entity." + baseName + "Entity;\n" +
                "import com.zeusas.cloud.core.service.IService;\n" +
                "\n" +
                "/**\n" +
                " * TODO: 描述\n" +
                " *\n" +
                " * @author " + CREATOR + "\n" +
-               " * @since TODO: 创建时间\n" +
+               " * @since " + QDate.format(QDate.YYYY_MM_DD_HMS, System.currentTimeMillis()) + "\n" +
                " */\n" +
-               "public interface " + tableName + "Service extends IService<" + tableName + ", " +
-               TABLE_MAP.get(tableName) + "> {\n" +
+               "public interface " + baseName + "Service extends IService<" + baseName + "Entity, " +
+               pkClazzName + "> {\n" +
                "\n" +
                "}";
     }
 
+
     /**
      * 创建ServiceImpl
      *
-     * @param tableName 表名称
-     *
+     * @param baseName 表名称
      * @return java.lang.String
      * @author zhaoyc
      * @since 17-Apr-21
      */
-    private static String createServiceImpl(String tableName) {
-        return "package " + PACKAGE + ".impl;\n" +
+    private static String createServiceImpl(String pkClazzName, String baseName) {
+        return "package " + PACKAGE + ".service.impl;\n" +
                "\n" +
-               "import " + PACKAGE + ".dao." + tableName + "Dao;\n" +
-               "import " + PACKAGE + ".entity." + tableName + ";\n" +
-               "import " + PACKAGE + ".service." + tableName + "Service;\n" +
+               "import com.zeusas.cloud.core.service.AbstractJpaService;\n" +
+               "import " + PACKAGE + ".dao." + baseName + "Dao;\n" +
+               "import " + PACKAGE + ".entity." + baseName + "Entity;\n" +
+               "import " + PACKAGE + ".service." + baseName + "Service;\n" +
                "import org.springframework.beans.factory.annotation.Autowired;\n" +
                "import org.springframework.stereotype.Service;\n" +
                "\n" +
@@ -282,17 +374,23 @@ public class AutoCreate {
                " * TODO: 描述\n" +
                " *\n" +
                " * @author " + CREATOR + "\n" +
-               " * @since TODO: 创建时间\n" +
+               " * @since " + QDate.format(QDate.YYYY_MM_DD_HMS, System.currentTimeMillis()) + "\n" +
                " */\n" +
                "@Service\n" +
-               "public class " + tableName + "ServiceImpl implements " + tableName + "Service {\n" +
+               "public class " + baseName + "ServiceImpl extends AbstractJpaService<" + baseName + "Entity, "
+               + pkClazzName + ">\n" +
+               "        implements " + baseName + "Service {\n" +
+               "\n" +
+               "    private final " + baseName + "Dao " + initLow(baseName) + "Dao;\n" +
                "\n" +
                "    @Autowired\n" +
-               "    private " + tableName + "Dao " + initLow(tableName) + "Dao;\n" +
+               "    public " + baseName + "ServiceImpl(" + baseName + "Dao " + initLow(baseName) + "Dao) {\n" +
+               "        this." + initLow(baseName) + "Dao = " + initLow(baseName) + "Dao;\n" +
+               "    }\n" +
                "\n" +
                "    @Override\n" +
-               "    protected " + tableName + "Dao getDao() {\n" +
-               "        return " + initLow(tableName) + "Dao;\n" +
+               "    protected " + baseName + "Dao getDao() {\n" +
+               "        return " + initLow(baseName) + "Dao;\n" +
                "    }\n" +
                "\n" +
                "}\n";
@@ -302,7 +400,6 @@ public class AutoCreate {
      * 创建Controller
      *
      * @param tableName 表名称
-     *
      * @return java.lang.String
      * @author zhaoyc
      * @since 17-Apr-21
@@ -310,7 +407,7 @@ public class AutoCreate {
     private static String createController(String tableName) {
         return "package " + PACKAGE + ".controller;\n" +
                "\n" +
-               "import " + PACKAGE + ".entity." + tableName + ";\n" +
+               "import " + PACKAGE + ".entity." + tableName + "Entity;\n" +
                "import " + PACKAGE + ".service." + tableName + "Service;\n" +
                "import org.springframework.beans.factory.annotation.Autowired;\n" +
                "import org.springframework.web.bind.annotation.RequestMapping;\n" +
@@ -320,7 +417,7 @@ public class AutoCreate {
                " * TODO: 描述\n" +
                " *\n" +
                " * @author " + CREATOR + "\n" +
-               " * @since TODO: 创建时间\n" +
+               " * @since " + QDate.format(QDate.YYYY_MM_DD_HMS, System.currentTimeMillis()) + "\n" +
                " */\n" +
                "@Controller\n" +
                "@RequestMapping(\"/" + initLow(tableName) + "\")\n" +
@@ -339,22 +436,34 @@ public class AutoCreate {
      * 开始创建Dao\Service\ServiceImpl\Controller文件
      *
      * @param tableName 数据库表名称
-     *
      * @author zhaoyc
      * @since 17-Apr-21
      */
     private static void createStart(String tableName) {
+        String pkClazzName = TABLE_MAP.get(tableName);
+        createStart(pkClazzName, tableName);
+    }
+
+    /**
+     * 开始创建Dao\Service\ServiceImpl\Controller文件
+     *
+     * @param pkClazzName 主键类型
+     * @param baseName    基础名称
+     * @author zhaoyc
+     * @since 17-Apr-21
+     */
+    private static void createStart(String pkClazzName, String baseName) {
         //获取当前项目的路径
         String url = System.getProperty("user.dir");
-        url += "\\src\\main\\java\\com\\zeusas\\cloud\\buos\\info\\";
+        url += PATH;
         //创建Dao
-        createFile(new File(url + "dao\\" + tableName + "Dao.java"), createDao(tableName));
+        createFile(new File(url + "dao\\" + baseName + "Dao.java"), createDao(pkClazzName, baseName));
         //创建Service
-        createFile(new File(url + "service\\" + tableName + "Service.java"), createService(tableName));
+        createFile(new File(url + "service\\" + baseName + "Service.java"), createService(pkClazzName, baseName));
         //创建ServiceImpl
-        createFile(new File(url + "service\\impl\\" + tableName + "ServiceImpl.java"), createServiceImpl(tableName));
+        createFile(new File(url + "service\\impl\\" + baseName + "ServiceImpl.java"), createServiceImpl(pkClazzName, baseName));
         //创建Controller
-        createFile(new File(url + "controller\\" + tableName + "Controller.java"), createController(tableName));
+//        createFile(new File(url + "controller\\" + tableName + "Controller.java"), createController(tableName));
     }
 
     /**
@@ -362,7 +471,6 @@ public class AutoCreate {
      *
      * @param file    创建的文件
      * @param context 文件里面的内容
-     *
      * @author zhaoyc
      * @since 17-Apr-21
      */
