@@ -1,37 +1,38 @@
-import linkedList.ListNode;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PlayGround {
+
+    public static int longestSubsequence(int[] arr, int difference) {
+        Set<Integer> res = new HashSet<>();
+        int ans = 1;
+        for (int i = 0; i < arr.length; i++) {
+            int left = arr[i];
+            for (int j = i + 1; j < arr.length; j++) {
+                int right = arr[j];
+                if (left + difference == right) {
+                    res.add(left);
+                    res.add(right);
+                    left = right;
+                }
+            }
+            if (res.size() > ans) {
+                ans = res.size();
+            }
+            res.clear();
+        }
+        return ans;
+    }
+
     public static void main(String[] args) throws InterruptedException {
-//        Thread.sleep(1000);
-//        List<byte[]> list = new ArrayList<>();
-//        int index = 1;
-//        for (int i = 0; i < 10000; i++) {
-//            Thread.sleep(1000);
-//            byte[] bytes = new byte[1024 * 1024];
-//            list.add(bytes);
-//            System.out.println("success " + index);
-//            index += 1;
-//        }
-//        System.out.println(list);
-        String a = "a";
-        String b = "b";
-        String c = "a" + "b"; // 编译时会自动优化中间的+号，让c=ab
-        String d = a + b; // 两个String对象相加会自动使用new关键字调构造方法
-        String e = "ab";
-        String f = "a" + new String("b");
-        System.out.println(f == c);
-        System.out.println(f == d);
-        System.out.println(f == e);
-        System.out.println(c == d);          //false
-        System.out.println(f == c);          //false
-        System.out.println(c == e);            //true
-        System.out.println(e == f);            //false
-        System.out.println(e == f.intern());    //true
+        int[] arr = {1,5,7,8,5,3,4,2,1};
+        int difference = -2;
+        int i = longestSubsequence(arr, difference);
+        System.out.println(i);
+        ArrayList<Object> objects = new ArrayList<>();
     }
 
     static class Solution {

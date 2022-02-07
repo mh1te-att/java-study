@@ -1,6 +1,10 @@
 package linkedList;
 
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.Stack;
 
 /**
  * 单链表
@@ -92,6 +96,39 @@ public class SinglyLinkedList {
         }
         prev.next = l1 == null ? l2 : l1;
         return prehead.next;
+    }
+
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Set<ListNode> visited = new HashSet<>();
+        ListNode temp = headA;
+        while (temp != null) {
+            visited.add(temp);
+            temp = temp.next;
+        }
+        temp = headB;
+        while (temp != null) {
+            if (visited.contains(temp)) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        int[] tmp1 = new int[]{4, 1, 8, 4, 5};
+        int[] tmp2 = new int[]{5, 0, 1, 8, 4, 5};
+        ListNode headA = ListNode.build(tmp1);
+        ListNode headB = ListNode.build(tmp2);
+        ListNode intersectionNode = getIntersectionNode(headA, headB);
+        System.out.println(intersectionNode.val);
+        LinkedList<Integer> list = new LinkedList<>();
+        LinkedList linkedList = new LinkedList();
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+//        while () {
+
+
     }
 
 }
