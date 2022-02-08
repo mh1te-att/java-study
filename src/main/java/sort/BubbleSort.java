@@ -34,9 +34,9 @@ public class BubbleSort {
                     array[j] = array[j + 1];
                     array[j + 1] = tmp;
                 }
-                System.out.println("第" + ++j + "次比较");
+                System.out.println("第" + j + "次比较");
             }
-            System.out.println("第" + ++i + "轮排序" + Arrays.toString(array));
+            System.out.println("第" + i + "轮排序" + Arrays.toString(array));
         }
     }
 
@@ -58,9 +58,9 @@ public class BubbleSort {
                     array[j + 1] = tmp;
                     flag = true;
                 }
-                System.out.println("第" + ++j + "次比较");
+                System.out.println("第" + j + "次比较");
             }
-            System.out.println("第" + ++i + "轮排序" + Arrays.toString(array));
+            System.out.println("第" + i + "轮排序" + Arrays.toString(array));
             if (!flag) {
                 break;
             }
