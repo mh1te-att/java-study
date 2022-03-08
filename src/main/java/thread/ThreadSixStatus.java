@@ -3,13 +3,14 @@ package thread;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @Title: ThreadSixStatus
- * @Description: Java API的六种状态
- * @Author: zhaoyc
- * @Date: 7/10/2020 3:20 PM
+ * Java API的六种状态
+ *
+ * @author zhaoyc
+ * @since 2/28/22
  */
 @Slf4j(topic = "c.ThreadSixStatus")
 public class ThreadSixStatus {
+
     public static void main(String[] args) {
         // t1创建没被调用为新建状态
         Thread t1 = new Thread("t1") {
@@ -93,6 +94,5 @@ public class ThreadSixStatus {
         log.debug("t4 status is {}", t4.getState());
         log.debug("t5 status is {}", t5.getState());
         log.debug("t6 status is {}", t6.getState());
-
     }
 }
